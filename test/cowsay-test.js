@@ -10,6 +10,7 @@ describe('Cowsay Controller', function() {
     angular.mock.module('cowsayApp');
     angular.mock.inject($controller => {
       this.cowsayCtrl = new $controller('CowsayController');
+      this.navCtrl = new $controller('NavController');
     });
   });
 
@@ -60,6 +61,12 @@ describe('Cowsay Controller', function() {
   describe('#routes', () => {
     it('should redirect to a new page', () => {
       expect(Array.isArray(this.navCtrl.routes)).toBe(true);
+      expect(this.navCtrl.routes[0].name).toEqual('home');
+      expect(this.navCtrl.routes[0].url).toEqual('/home');
+      expect(this.navCtrl.routes[1].name).toEqual('cow creator');
+      expect(this.navCtrl.routes[1].url).toEqual('/cowCreator');
+      expect(this.navCtrl.routes[2].name).toEqual('account');
+      expect(this.navCtrl.routes[2].url).toEqual('/account');
     });
   });
 });
